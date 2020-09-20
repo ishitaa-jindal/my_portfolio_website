@@ -93,12 +93,12 @@ disqusShortname = ""
     
     [[params.tiles.showcase]]
       title = "About Me"
-      subtitle = "Business Analyst| Asthete"
+      subtitle = "Business Analyst|Researcher|Asthete"
       image = "projects/tree.png"
       url = "blogs/aliquam"
 
     [[params.tiles.showcase]]
-      title = "Singapore AirBnbss"
+      title = "Singapore AirBnbs"
       subtitle = "A mapping analysis"
       image = "pic02.jpg"
       url = "projects/project 1"
