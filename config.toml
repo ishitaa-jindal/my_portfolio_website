@@ -100,7 +100,7 @@ disqusShortname = ""
     [[params.tiles.showcase]]
       title = "Singapore AirBnbs"
       subtitle = "A mapping analysis"
-      image = "projects/airbnb_mapping.png"
+      image = "projects/airbnb.png"
       url = "blogs/airbnb"
 
     [[params.tiles.showcase]]
@@ -138,13 +138,13 @@ disqusShortname = ""
   # Section Type Two
   [params.two]
     enable = true
-    title = "Massa libero"
+    title = "Hellooo"
     subtitle = """Nullam et orci eu lorem consequat tincidunt vivamus et sagittis libero. 
     Mauris aliquet magna magna sed nunc rhoncus pharetra. 
     Pellentesque condimentum sem. In efficitur ligula tate urna. Maecenas laoreet massa vel lacinia pellentesque lorem ipsum dolor. 
     Nullam et orci eu lorem consequat tincidunt. Vivamus et sagittis libero.
     Mauris aliquet magna magna sed nunc rhoncus amet pharetra et feugiat tempus."""
-    buttonText = "Get Started"
+    buttonText = "Explore Blog"
     url = "blogs"
 
 
@@ -172,33 +172,33 @@ disqusShortname = ""
     # by copying the corresponding map with frontmatter code.
     [[params.contact.email]]
     title = "Email"
-    email = "example@domain.com"
+    email = "ijindal.mam2021@london.edu"
 
     [[params.contact.phone]]
     title = "Phone"
-    phone = "(000) 000-0000 x1234"
+    phone = "Available on request"
 
     [[params.contact.address]]
-    title = "Address"
-    street = "Street"
-    city = "City, ST 00000"
-    country = "Country"
+    title = "London Business School"
+    street = "Regent's Park"
+    city = "London, NW1 4SA"
+    country = "United Kingdom"
 
   # Footer section
   [params.footer]
     enable = true
-    copyright = "Company Name"
+    copyright = "Ishitaa Jindal"
 
     # Uses font awesome icons
-    [[params.footer.social]]
-      icon = "fa-twitter"
-      url= "https://www.twitter.com"
-      label = "Twitter"
+    #[[params.footer.social]]
+    #  icon = "fa-twitter"
+    #  url= "https://www.twitter.com"
+    #  label = "Twitter"
 
-    [[params.footer.social]]
-      icon = "fa-facebook"
-      url= "https://www.facebook.com"
-      label = "Facebook"
+    #[[params.footer.social]]
+    #  icon = "fa-facebook"
+    #  url= "https://www.facebook.com"
+    #  label = "Facebook"
 
     [[params.footer.social]]
       icon = "fa-instagram"
@@ -215,7 +215,7 @@ disqusShortname = ""
       url= "https://www.linkedin.com"
       label = "LinkedIn"
 
-    [[params.footer.quicklinks]]
-      text = "Design: "
-      url= "https://www.html5up.net"
-      alt = "HTML5 UP"
+    #[[params.footer.quicklinks]]
+    #  text = "Design: "
+    #  url= "https://www.html5up.net"
+    #  alt = "HTML5 UP"
