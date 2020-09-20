@@ -8,7 +8,7 @@ draft: false
 image: pic12.jpg
 keywords: ""
 slug: airbnb
-title: Predictive models of the price of Airbnbs in Singapore 
+title: Price Analysis of Airbnbs in Singapore 
 ---
 
 
@@ -52,38 +52,26 @@ library(GGally)
 
 !["Singapore Skyline"](https://raw.githubusercontent.com/Gritzbach/my_website/master/Singapore.webp)
 
+***
 # Introduction
 Airbnb is a vacation rental online marketplace based in San Francisco, California. Founded in 2008, the company has skyrocketed in popularity, with a private valuation of $18 billion and a plan to potentially go public within the year. 
 The scope of this work, is to analyse data about Airbnb listings and fit a model to predict the total cost for two people staying 4 nights in an AirBnB in Singapore. 
 
 We begin with exploratory data analysis and mapping of the key insights from the dataset before running various analyses including a demand analysis over time, a superhost analysis on the price and a heatmap of the average daily prices over the past 2 years, before running a thorough regression analysis. We then analyse our final results and wrap it up in our conclusion.
 
-# Exploratory Data Analysis(EDA)
+***
+# Exploratory Data Analysis
 The aim of this section is to gain a better understanding of our data set. To do this, we utilize a variety of tools, such as data visualizations and correlation matrices. Our dataset comes from insideairbnb.com, and represent official AirBnb data. 
 
-## Loading the Data
+***
+## Raw Data
+We have a look at our raw data, after selecting the attributes from the table that we want to use in this analyse.
 
 ```{r, echo=TRUE}
 
 # Importing listings dataset
 singapore <- vroom("http://data.insideairbnb.com/singapore/sg/singapore/2020-06-22/data/listings.csv.gz") %>% 
     clean_names()
-
-dplyr::glimpse(singapore)
-
-# Importing reviews dataset
-reviews <- vroom("http://data.insideairbnb.com/singapore/sg/singapore/2020-06-22/data/reviews.csv.gz") %>% 
-    clean_names()
-
-glimpse(reviews)
-
-```
-
-## Computing Summary Statistics
-
-To proceed with our analysis we will begin by selecting the specific variables of interest that will inform our regression models. On the figure below, we can see the summary statics of the selected variables and their rough distributions. By inspecting the distributions, all variables seem to be heavily skewed, which could potentially signify the existence of extreme data points, which will be dealt with in part 2.3.2.
-
-```{r}
 
 #select the variables that will be used for analysis
 singapore_listings <- singapore %>% 
@@ -110,16 +98,25 @@ singapore_listings <- singapore %>%
          security_deposit,
          accommodates,
          bedrooms)
-  
+
+dplyr::glimpse(singapore_listings)
+
+```
+***
+## Computing Summary Statistics
+
+Let's compute the summary statistics for our data and desired variables. This will give us an idea about data size, variable types, missing and unique values to begin with. For numeric data, we also see the mean and standard deviation which helps guide the analysis.
+
+```{r}
 #calculate summary statistics and observe missing values if any
 skimr::skim(singapore_listings)
 ```
 
-## Cleaning the Data: 
+In the figure above, we can see the summary statics of the selected variables and their rough distributions. By inspecting the distributions, all variables seem to be heavily skewed, which could potentially signify the existence of extreme data points, which will be dealt with in the next part.
 
-After having selected the variables of interest, we need to clean up the dataset to prepare it for analysis. We begin by handling the missing data, transforming price data to numerical values, visualising the distribution of our dependent variable, the price and filtering out extreme data.
-
-###Data Wrangling and Handling Missing Values
+***
+## Data Wrangling and Handling Missing Values
+After having selected the variables of interest, we need to clean up the dataset to prepare it for analysis. We begin by handling the missing data, transforming price data to numerical values, visualising the distribution of our dependent variable, then price and filtering out extreme data.
 
 ```{r}
 singapore_listings <- singapore_listings %>%
@@ -136,6 +133,7 @@ singapore_listings <- singapore_listings %>%
 
 ```
 
+***
 ## Data Filtering
 
 After looking at the above shown figures, we chose to filter the following variables:
@@ -168,9 +166,9 @@ filtered_listings <- filtered_listings %>%
 
 ```
 
+***
 # Mapping
-
-Singapore is a vibrant touristic city-state with the largest port by throughput consistently since 2015. Below we mapped AirBnbs in singapore with respect to their geographical location, depicting their price range, the property type and the 4 main neighbourhoods.  As expected, the majority of airbnb listings are located in the city-center, with higher prices predominantely in the area. Moreover, larger accommodation types such as hostels are also concentrated in the city center. On the contrary, the northern part of Singapore seems to be significantly less developed and less touristic, as the number of listings is lower.
+Singapore is a vibrant touristic city-state with the largest port by throughput consistently since 2015. Below we map AirBnbs in singapore with respect to their geographical location, depicting their price range.
 
 ```{r}
 
@@ -191,7 +189,14 @@ map_1 <- leaflet(data = filtered_listings) %>%
     opacity = 1
   )
 map_1
+```
 
+***
+The second step would be to map airbnb listing by neighbourhood. The neighbourhoods in Singapore are grouped into 5 regions - Cetral, East, North-East, North and West. This map gives us an idea of the most popular or crowded region having maximum number of listings. 
+
+When compared with the map above, it also gives insights of how various regions are priced.
+
+```{r}
 #color by neighborhood
 pal <- colorFactor(palette = c("#484848", "#FC642D", "#767676", "#00A699", "#FF5A5F"), 
                levels = c("North-East Region", "North Region", "East Region", "West Region", "Central Region"))
@@ -203,8 +208,18 @@ map_2 <- leaflet(data = filtered_listings) %>%
                    radius = 1, 
                    color = ~pal(neighbourhood_group_cleansed), 
                    fillOpacity = 0.4, 
-                   label = ~neighbourhood_group_cleansed)
+                   label = ~neighbourhood_group_cleansed) %>% 
+   addLegend("bottomright", pal = pal, values = ~neighbourhood_group_cleansed,
+    title = "Neighbourhood",
+    opacity = 1
+  )
+map_2 
+```
 
+***
+We further map the number of airbnb listings for each property type. The property types we've used here are the filtered ones i.e. the 5 most popular properties are taken and the rest are categorised under one group named 'other'.
+
+```{r}
 #color by property type
 pal <- colorFactor(palette = c("#e98a15", "#a2ad59", "#1D3461", "#538083", "#a53860"), 
                levels = c("Apartment","Condominium", "Hostel","House", "Serviced apartment"))
@@ -216,8 +231,17 @@ map_3 <- leaflet(data = filtered_listings) %>%
                    radius = 1, 
                    color = ~pal(prop_type_simplified), 
                    fillOpacity = 0.5, 
-                   label = ~prop_type_simplified)
-map_2 
+                   label = ~prop_type_simplified) %>% 
+     addLegend("bottomright", pal = pal, values = ~prop_type_simplified,
+    title = "Property",
+    opacity = 1
+  )
 map_3
 
 ```
+
+***
+# Conclusions 
+As expected, the majority of airbnb listings are located in the city-center, with higher prices predominantly in the area. Moreover, larger accommodation types such as hostels are also concentrated in the city center. 
+
+On the contrary, the northern part of Singapore seems to be significantly less developed and less touristic, as the number of listings is lower.

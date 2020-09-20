@@ -37,8 +37,8 @@ disqusShortname = ""
 
   # Navigation Section
   [params.navigation]
-    title = "Ishitaa Jindal"
-    subtitle = "Portfolio"
+    title = "Ishitaa Jindal's Portfolio"
+    subtitle = ""
     menu = "Menu"
     # Optional logo as brand stored in img/
     # logo = "logo.png"
@@ -52,11 +52,11 @@ disqusShortname = ""
       url = "blogs"
 
     [[params.navigation.links]]
-      name = "Data Analytics"
+      name = "Data Analytics Blog"
       url = "blogs/ipsum"
 
     [[params.navigation.links]]
-      name = "Art"
+      name = "Art Blog"
       url = "elements.html"
 
     # Add custom links here by uncommenting code below. To remove links just delete
@@ -100,7 +100,7 @@ disqusShortname = ""
     [[params.tiles.showcase]]
       title = "Singapore AirBnbs"
       subtitle = "A mapping analysis"
-      image = "pic02.jpg"
+      image = "projects/airbnb_mapping.png"
       url = "blogs/airbnb"
 
     [[params.tiles.showcase]]
