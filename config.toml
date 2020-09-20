@@ -101,7 +101,7 @@ disqusShortname = ""
       title = "Singapore AirBnbs"
       subtitle = "A mapping analysis"
       image = "pic02.jpg"
-      url = "projects/project 1"
+      url = "projects/project 1/index.Rmd"
 
     [[params.tiles.showcase]]
       title = "Magna"
