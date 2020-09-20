@@ -7,7 +7,7 @@ description: Airbnb price analysis
 draft: false
 image: pic12.jpg
 keywords: ""
-slug: project 1
+slug: index
 title: Predictive models of the price of Airbnbs in Singapore 
 ---
 
