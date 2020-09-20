@@ -99,7 +99,7 @@ disqusShortname = ""
 
     [[params.tiles.showcase]]
       title = "Singapore AirBnbss"
-      subtitle = "A mappinf analysis"
+      subtitle = "A mapping analysis"
       image = "pic02.jpg"
       url = "projects/project 1"
 
