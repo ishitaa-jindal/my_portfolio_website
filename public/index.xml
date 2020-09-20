@@ -12,13 +12,15 @@
     
     
     <item>
-      <title>Predictive models of the price of Airbnbs in Singapore</title>
-      <link>/projects/projects/project1/</link>
+      <title>Imdb Movie Ratings</title>
+      <link>/blogs/imdb/</link>
       <pubDate>Fri, 18 Sep 2020 00:00:00 +0000</pubDate>
       
-      <guid>/projects/projects/project1/</guid>
-      <description>“Singapore Skyline”
-IntroductionAirbnb is a vacation rental online marketplace based in San Francisco, California. Founded in 2008, the company has skyrocketed in popularity, with a private valuation of $18 billion and a plan to potentially go public within the year.The scope of this work, is to analyse data about Airbnb listings and fit a model to predict the total cost for two people staying 4 nights in an AirBnB in Singapore.</description>
+      <guid>/blogs/imdb/</guid>
+      <description>“Imdb”
+IntroductionThe aim of this analysis is to find the relationship between the movie budgets, reviews and earnings based on the Kaggle IMDB 5000 movie dataset
+We further perform hypothesis testing to check if ratings are dependent on directors and if we can safely suggest that movies made by certain directors gain better ratings than those by some others.
+Raw DataLet us load the data and glimpse at its structure:</description>
     </item>
     
     <item>

@@ -49,11 +49,11 @@ disqusShortname = ""
 
     [[params.navigation.links]]
       name = "About Me"
-      url = "blogs"
+      url = "blogs/aliquam"
 
     [[params.navigation.links]]
       name = "Data Analytics Blog"
-      url = "blogs/ipsum"
+      url = "blogs"
 
     [[params.navigation.links]]
       name = "Art Blog"
@@ -68,13 +68,13 @@ disqusShortname = ""
 
     # Button Style 1
     [[params.navigation.button1]]
-      name = "Get Started"
+      name = "Get in Touch"
       url = "blogs"
 
     # Button Style 2
-    [[params.navigation.button2]]
-      name = "Log In"
-      url = "#"
+    #[[params.navigation.button2]]
+    #  name = "Log In"
+    #  url = "#"
 
 
   # Banner section
@@ -104,10 +104,10 @@ disqusShortname = ""
       url = "blogs/airbnb"
 
     [[params.tiles.showcase]]
-      title = "Magna"
-      subtitle = "Lorem Etiam Nullam"
-      image = "pic03.jpg"
-      url = "blogs/magna"
+      title = "IMDB Ratings"
+      subtitle = "A study of movie reviews"
+      image = "IMDb.jpg"
+      url = "blogs/imdb"
 
     [[params.tiles.showcase]]
       title = "Ipsum"
@@ -115,17 +115,17 @@ disqusShortname = ""
       image = "pic04.jpg"
       url = "blogs/ipsum"
 
-    [[params.tiles.showcase]]
-      title = "Consequat"
-      subtitle = "Ipsum Dolor Sit Amet"
-      image = "pic05.jpg"
-      url = "blogs/ipsum"
+    #[[params.tiles.showcase]]
+    #  title = "Consequat"
+    #  subtitle = "Ipsum Dolor Sit Amet"
+    #  image = "pic05.jpg"
+    #  url = "blogs/ipsum"
 
-    [[params.tiles.showcase]]
-      title = "Etiam"
-      subtitle = "Feugiat Amet Tempus"
-      image = "pic06.jpg"
-      url = "blogs/ipsum"
+    #[[params.tiles.showcase]]
+    #  title = "Etiam"
+    #  subtitle = "Feugiat Amet Tempus"
+    #  image = "pic06.jpg"
+    #  url = "blogs/ipsum"
     # You can make more showcases by copy and pasting the code above
 
   [params.blog]

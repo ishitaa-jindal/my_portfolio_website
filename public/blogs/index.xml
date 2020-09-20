@@ -12,6 +12,18 @@
     
     
     <item>
+      <title>Imdb Movie Ratings</title>
+      <link>/blogs/imdb/</link>
+      <pubDate>Fri, 18 Sep 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/blogs/imdb/</guid>
+      <description>“Imdb”
+IntroductionThe aim of this analysis is to find the relationship between the movie budgets, reviews and earnings based on the Kaggle IMDB 5000 movie dataset
+We further perform hypothesis testing to check if ratings are dependent on directors and if we can safely suggest that movies made by certain directors gain better ratings than those by some others.
+Raw DataLet us load the data and glimpse at its structure:</description>
+    </item>
+    
+    <item>
       <title>Price Analysis of Airbnbs in Singapore</title>
       <link>/blogs/airbnb/</link>
       <pubDate>Fri, 18 Sep 2020 00:00:00 +0000</pubDate>
