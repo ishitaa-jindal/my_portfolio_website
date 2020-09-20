@@ -20,7 +20,7 @@ disqusShortname = ""
 
   # Provide your metadata here.
   name = "Ishitaa Jindal"
-  description = "Your description"
+  description = "My portfolio website"
 
   # Link custom assets relative to /static
   custom_css = []
@@ -37,7 +37,7 @@ disqusShortname = ""
 
   # Navigation Section
   [params.navigation]
-    title = "Ishitaa"
+    title = "Ishitaa Jindal"
     subtitle = "Portfolio"
     menu = "Menu"
     # Optional logo as brand stored in img/
@@ -48,15 +48,15 @@ disqusShortname = ""
       url = "#"
 
     [[params.navigation.links]]
-      name = "Blogs"
+      name = "About Me"
       url = "blogs"
 
     [[params.navigation.links]]
-      name = "Generic Blog"
+      name = "Data Analytics"
       url = "blogs/ipsum"
 
     [[params.navigation.links]]
-      name = "Elements"
+      name = "Art"
       url = "elements.html"
 
     # Add custom links here by uncommenting code below. To remove links just delete
@@ -81,8 +81,8 @@ disqusShortname = ""
   [params.banner]
     # To change the background image on the homepage banner, replace 'banner.jpg' in
     # the 'static/img' folder.
-    title = "Hi, my name is Ishitaa"
-    subtitle = "A PERSONAL PORTFOLIO WEBSITE"
+    title = "Hi, I'm Ishitaa"
+    subtitle = "ON A MISSION BIGGER THAN MYSELF, FOCUSING ON MAKING POSITIVE IMPACT"
     buttonText = "Know More"
 
 
@@ -92,8 +92,8 @@ disqusShortname = ""
     # Display your showcases here.
     
     [[params.tiles.showcase]]
-      title = "Aliquam"
-      subtitle = "Ipsum Dolor Sit Amet"
+      title = "About Me"
+      subtitle = "Business Analyst| Asthete"
       image = "projects/tree.png"
       url = "blogs/aliquam"
 
