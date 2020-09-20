@@ -12,6 +12,17 @@
     
     
     <item>
+      <title>Gapminder Analysis</title>
+      <link>/blogs/gapminder/</link>
+      <pubDate>Fri, 18 Sep 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/blogs/gapminder/</guid>
+      <description>“Gapminder”
+IntroductionGapminder dataset provides data about the population, life expectancy and GDP in different countries of the world from 1952 to 2007. It is an extremely useful dataset to start with, for learning the basics of data analysis and visualisations. With this data, we aim to analyse the life expactancy in various countries and try to explain any anomalies and trends that we observe.
+Raw DataWe first look at the first 20 rows of the gapminder dataset.</description>
+    </item>
+    
+    <item>
       <title>Imdb Movie Ratings</title>
       <link>/blogs/imdb/</link>
       <pubDate>Fri, 18 Sep 2020 00:00:00 +0000</pubDate>
@@ -34,12 +45,13 @@ We further perform hypothesis testing to check if ratings are dependent on direc
     </item>
     
     <item>
-      <title>Aliquam</title>
+      <title>About Me</title>
       <link>/blogs/aliquam/</link>
       <pubDate>Tue, 31 Oct 2017 22:42:51 -0500</pubDate>
       
       <guid>/blogs/aliquam/</guid>
-      <description></description>
+      <description>I&amp;rsquo;m 21 years old, born and brought up in India and have spent most of my time growing up in Mumbai, a city we also call the city of dreams.
+I obtained a B.Tech in Computer Science in 2020 and during the course of engineering grew inclined towards the field of Data Science. Exploring this area, I&amp;rsquo;ve worked on various projects and successfully published two research papers in the prestigious IEEE Xplore:</description>
     </item>
     
     <item>
@@ -61,12 +73,12 @@ We further perform hypothesis testing to check if ratings are dependent on direc
     </item>
     
     <item>
-      <title>Ipsum</title>
+      <title>Art Blog (Coming Soon!)</title>
       <link>/blogs/ipsum/</link>
       <pubDate>Tue, 31 Oct 2017 21:28:43 -0500</pubDate>
       
       <guid>/blogs/ipsum/</guid>
-      <description>Nullam et orci eu lorem consequat tincidunt vivamus et sagittis magna sed nunc rhoncus condimentum sem. In efficitur ligula tate urna. Maecenas massa sed magna lacinia magna pellentesque lorem ipsum dolor. Nullam et orci eu lorem consequat tincidunt. Vivamus et sagittis tempus.</description>
+      <description></description>
     </item>
     
     <item>

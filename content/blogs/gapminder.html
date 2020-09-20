@@ -1,0 +1,93 @@
+---
+categories:
+- ""
+- ""
+date: "2020-09-18"
+description: Airbnb price analysis
+draft: false
+image: pic12.jpg
+keywords: ""
+slug: gapminder
+title: Gapminder Analysis
+---
+
+
+
+<div class="figure">
+<img src="https://www.adamvowles.co.uk/wp-content/uploads/2015/05/gapminder.png" alt="" />
+<p class="caption">“Gapminder”</p>
+</div>
+<div id="introduction" class="section level2">
+<h2>Introduction</h2>
+<p>Gapminder dataset provides data about the population, life expectancy and GDP in different countries of the world from 1952 to 2007. It is an extremely useful dataset to start with, for learning the basics of data analysis and visualisations. With this data, we aim to analyse the life expactancy in various countries and try to explain any anomalies and trends that we observe.</p>
+</div>
+<div id="raw-data" class="section level2">
+<h2>Raw Data</h2>
+<p>We first look at the first 20 rows of the <code>gapminder</code> dataset.</p>
+<pre class="r"><code>glimpse(gapminder)</code></pre>
+<pre><code>## Rows: 1,704
+## Columns: 6
+## $ country   &lt;fct&gt; Afghanistan, Afghanistan, Afghanistan, Afghanistan, Afgha...
+## $ continent &lt;fct&gt; Asia, Asia, Asia, Asia, Asia, Asia, Asia, Asia, Asia, Asi...
+## $ year      &lt;int&gt; 1952, 1957, 1962, 1967, 1972, 1977, 1982, 1987, 1992, 199...
+## $ lifeExp   &lt;dbl&gt; 28.8, 30.3, 32.0, 34.0, 36.1, 38.4, 39.9, 40.8, 41.7, 41....
+## $ pop       &lt;int&gt; 8425333, 9240934, 10267083, 11537966, 13079460, 14880372,...
+## $ gdpPercap &lt;dbl&gt; 779, 821, 853, 836, 740, 786, 978, 852, 649, 635, 727, 97...</code></pre>
+<pre class="r"><code>head(gapminder, 20) # look at the first 20 rows of the dataframe</code></pre>
+<pre><code>## # A tibble: 20 x 6
+##    country     continent  year lifeExp      pop gdpPercap
+##    &lt;fct&gt;       &lt;fct&gt;     &lt;int&gt;   &lt;dbl&gt;    &lt;int&gt;     &lt;dbl&gt;
+##  1 Afghanistan Asia       1952    28.8  8425333      779.
+##  2 Afghanistan Asia       1957    30.3  9240934      821.
+##  3 Afghanistan Asia       1962    32.0 10267083      853.
+##  4 Afghanistan Asia       1967    34.0 11537966      836.
+##  5 Afghanistan Asia       1972    36.1 13079460      740.
+##  6 Afghanistan Asia       1977    38.4 14880372      786.
+##  7 Afghanistan Asia       1982    39.9 12881816      978.
+##  8 Afghanistan Asia       1987    40.8 13867957      852.
+##  9 Afghanistan Asia       1992    41.7 16317921      649.
+## 10 Afghanistan Asia       1997    41.8 22227415      635.
+## 11 Afghanistan Asia       2002    42.1 25268405      727.
+## 12 Afghanistan Asia       2007    43.8 31889923      975.
+## 13 Albania     Europe     1952    55.2  1282697     1601.
+## 14 Albania     Europe     1957    59.3  1476505     1942.
+## 15 Albania     Europe     1962    64.8  1728137     2313.
+## 16 Albania     Europe     1967    66.2  1984060     2760.
+## 17 Albania     Europe     1972    67.7  2263554     3313.
+## 18 Albania     Europe     1977    68.9  2509048     3533.
+## 19 Albania     Europe     1982    70.4  2780097     3631.
+## 20 Albania     Europe     1987    72    3075321     3739.</code></pre>
+<p>I come from <strong>India</strong> so let’s look at how life expectancy has changed over the years for my home country.</p>
+<pre class="r"><code>country_data &lt;- gapminder %&gt;% 
+            filter(country == &quot;India&quot;) 
+continent_data &lt;- gapminder %&gt;% 
+            filter(continent == &quot;Asia&quot;)</code></pre>
+</div>
+<div id="insightful-visualising" class="section level2">
+<h2>Insightful Visualising</h2>
+<p>This is a plot of life expectancy over time for a single country (India).</p>
+<pre class="r"><code> plot1 &lt;- ggplot(data = country_data, mapping = aes(x = year, y = lifeExp))+ geom_point() + geom_smooth(se = FALSE)+ expand_limits(y=0)
+ plot1</code></pre>
+<p><img src="/blogs/gapminder_files/figure-html/lifeExp_one_country-1.png" width="648" style="display: block; margin: auto;" /></p>
+<p>Adding a title helps make the graph more descriptive. So, let us have a look again after including some text.</p>
+<pre class="r"><code> plot2 &lt;- plot1 + labs(title = &quot;Life Expectancy in India over Time&quot;, x = &quot;Year&quot;, y = &quot;Life Expectency (in years)&quot;)
+ print(plot2)</code></pre>
+<p><img src="/blogs/gapminder_files/figure-html/lifeExp_one_country_with_label-1.png" width="648" style="display: block; margin: auto;" /></p>
+<p>This is a plot for all countries in <strong>Asia</strong> with a legend depicting colours for the different countries.</p>
+<pre class="r"><code> plot3 &lt;- ggplot(data = continent_data , mapping = aes(x = year , y =  lifeExp , colour= country ))+
+   geom_point() + geom_smooth(se = FALSE) + expand_limits(y=0) + labs(title = &quot;Life Expectancy in Asia over Time (Countrywise)&quot;, x = &quot;Year&quot;, y = &quot;Life Expectency (in years)&quot;)
+print(plot3)</code></pre>
+<p><img src="/blogs/gapminder_files/figure-html/lifeExp_one_continent-1.png" width="648" style="display: block; margin: auto;" /></p>
+<p>This is a life expectancy over time graph, grouped by continent. The legend has been removed to make it look more neat.</p>
+<pre class="r"><code> plot4 &lt;- ggplot(data = gapminder , mapping = aes(x = year  , y = lifeExp , colour= continent))+ geom_point() + geom_smooth(se = FALSE) + facet_wrap(~continent) + theme(legend.position=&quot;none&quot;) + expand_limits(y=0)
+print(plot4)</code></pre>
+<p><img src="/blogs/gapminder_files/figure-html/lifeExp_facet_by_continent-1.png" width="648" style="display: block; margin: auto;" /></p>
+</div>
+<div id="analysis" class="section level2">
+<h2>Analysis</h2>
+<p>In the earlier <em>country specific</em> plots we observe that the life expectancy in <strong>India</strong> has increased from 36 years in 1952 to 69 years in 2020 which is approximately double. This improve can be attributed to advancement in healthcare along with a decrease in infant mortality.</p>
+<p>As we move to the next plot, which is <em>continent specific</em>, we once again observe that almost all the countries in Asia have shown promising growth in terms of life expectancy. However, countries like <strong>Japan</strong> started at 60 and have crossed the mark of 80 while some countries like <strong>Afghanistan</strong> started at 30 and have only been able to reach to around 42 years. The main cause for this slow trend would be malnutrition and lack of basic health services which in turn is caused by the unstable economic conditions.</p>
+<p>This indicates that there exists a great scope to deliver public health services and effective medicine in these countries that are still struggling.</p>
+<p>The final plot grouped by continent extrapolates the observations from the previous graphs. While <strong>Oceania, Europe and America</strong> lead, <strong>Asia and Africa</strong> closely follow. Overall, the world average life expectancy increased by double! As more people have moved above the poverty line, healthcare has become affordable and accessible to most.</p>
+<p>It looks from the data that we can safely say the unequal divide in standard of living between countries is decreasing and the world as a whole has and continues to transition into a safer place to live in.</p>
+</div>

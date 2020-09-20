@@ -53,11 +53,15 @@ disqusShortname = ""
 
     [[params.navigation.links]]
       name = "Data Analytics Blog"
-      url = "blogs"
-
+      url = "#"
+      
     [[params.navigation.links]]
       name = "Art Blog"
-      url = "elements.html"
+      url = "blogs/ipsum"
+
+    #[[params.navigation.links]]
+    #  name = "Art Blog"
+    #  url = "elements.html"
 
     # Add custom links here by uncommenting code below. To remove links just delete
     # the [[params.navigation.links]] map associated with that link. Copy and paste
@@ -69,7 +73,7 @@ disqusShortname = ""
     # Button Style 1
     [[params.navigation.button1]]
       name = "Get in Touch"
-      url = "blogs"
+      url = "#"
 
     # Button Style 2
     #[[params.navigation.button2]]
@@ -106,14 +110,14 @@ disqusShortname = ""
     [[params.tiles.showcase]]
       title = "IMDB Ratings"
       subtitle = "A study of movie reviews"
-      image = "IMDb.jpg"
+      image = "projects/IMDb.jpg"
       url = "blogs/imdb"
 
     [[params.tiles.showcase]]
-      title = "Ipsum"
-      subtitle = "Nisl Sed Aliquam"
-      image = "pic04.jpg"
-      url = "blogs/ipsum"
+      title = "Gapminder Data"
+      subtitle = "Country comparison and analysis"
+      image = "projects/gapminder.jpg"
+      url = "blogs/gapminder"
 
     #[[params.tiles.showcase]]
     #  title = "Consequat"
@@ -138,14 +142,10 @@ disqusShortname = ""
   # Section Type Two
   [params.two]
     enable = true
-    title = "Hellooo"
-    subtitle = """Nullam et orci eu lorem consequat tincidunt vivamus et sagittis libero. 
-    Mauris aliquet magna magna sed nunc rhoncus pharetra. 
-    Pellentesque condimentum sem. In efficitur ligula tate urna. Maecenas laoreet massa vel lacinia pellentesque lorem ipsum dolor. 
-    Nullam et orci eu lorem consequat tincidunt. Vivamus et sagittis libero.
-    Mauris aliquet magna magna sed nunc rhoncus amet pharetra et feugiat tempus."""
+    title = "My Interests and Blog"
+    subtitle = "I believe that with consistency we achieve and with faith we persevere. I'm a resilient individual with determination to make positive impact wherever I put my energy. This website is an attempt to share some of my work in the field of analytics which can be browsed through the analytics blog above. I would also love sharing some of my art projects. Feel free to reach out as I always like to connect with like minded people."
     buttonText = "Explore Blog"
-    url = "blogs"
+    url = "blogs/ipsum"
 
 
   # Contact section
@@ -202,17 +202,17 @@ disqusShortname = ""
 
     [[params.footer.social]]
       icon = "fa-instagram"
-      url= "https://www.instagram.com"
+      url= "https://www.instagram.com/ishitaajindal/"
       label = "Instagram"
     
     [[params.footer.social]]
       icon = "fa-github"
-      url= "https://www.github.com"
+      url= "https://github.com/ishitaa-jindal"
       label = "GitHub"
 
     [[params.footer.social]]
       icon = "fa-linkedin"
-      url= "https://www.linkedin.com"
+      url= "https://www.linkedin.com/in/ishitaa-jindal-355532152/"
       label = "LinkedIn"
 
     #[[params.footer.quicklinks]]

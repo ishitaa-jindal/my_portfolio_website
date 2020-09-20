@@ -1,0 +1,103 @@
+---
+categories:
+- ""
+- ""
+date: "2020-09-18"
+description: Airbnb price analysis
+draft: false
+image: pic12.jpg
+keywords: ""
+slug: gapminder
+title: Gapminder Analysis
+---
+
+```{r, setup, include=FALSE}
+knitr::opts_chunk$set(
+  message = FALSE, 
+  warning = FALSE, 
+  tidy=FALSE,     # display code as typed
+  size="small")   # slightly smaller font for code
+options(digits = 3)
+
+# default figure size
+knitr::opts_chunk$set(
+  fig.width=6.75, 
+  fig.height=6.75,
+  fig.align = "center"
+)
+```
+
+```{r load-libraries, warning=FALSE, message=FALSE, echo=FALSE}
+library(tidyverse)  # Load ggplot2, dplyr, and all the other tidyverse packages
+library(gapminder)  # gapminder dataset
+library(here)
+```
+
+!["Gapminder"](https://www.adamvowles.co.uk/wp-content/uploads/2015/05/gapminder.png)
+
+## Introduction
+
+Gapminder dataset provides data about the population, life expectancy and GDP in different countries of the world from 1952 to 2007. It is an extremely useful dataset to start with, for learning the basics of data analysis and visualisations. With this data, we aim to analyse the life expactancy in various countries and try to explain any anomalies and trends that we observe.
+
+## Raw Data
+
+We first look at the first 20 rows of the `gapminder` dataset.
+
+```{r}
+glimpse(gapminder)
+head(gapminder, 20) # look at the first 20 rows of the dataframe
+```
+
+I come from **India** so let's look at how life expectancy has changed over the years for my home country. 
+
+```{r}
+country_data <- gapminder %>% 
+            filter(country == "India") 
+continent_data <- gapminder %>% 
+            filter(continent == "Asia")
+```
+
+## Insightful Visualising
+
+This is a plot of life expectancy over time for a single country (India). 
+
+```{r, lifeExp_one_country}
+ plot1 <- ggplot(data = country_data, mapping = aes(x = year, y = lifeExp))+ geom_point() + geom_smooth(se = FALSE)+ expand_limits(y=0)
+ plot1
+```
+
+Adding a title helps make the graph more descriptive. So, let us have a look again after including some text.
+
+```{r, lifeExp_one_country_with_label}
+ plot2 <- plot1 + labs(title = "Life Expectancy in India over Time", x = "Year", y = "Life Expectency (in years)")
+ print(plot2)
+```
+
+
+This is a plot for all countries in **Asia** with a legend depicting colours for the different countries.  
+
+```{r lifeExp_one_continent}
+ plot3 <- ggplot(data = continent_data , mapping = aes(x = year , y =  lifeExp , colour= country ))+
+   geom_point() + geom_smooth(se = FALSE) + expand_limits(y=0) + labs(title = "Life Expectancy in Asia over Time (Countrywise)", x = "Year", y = "Life Expectency (in years)")
+print(plot3)
+```
+
+This is a life expectancy over time graph, grouped by continent. The legend has been removed to make it look more neat.
+
+```{r lifeExp_facet_by_continent}
+ plot4 <- ggplot(data = gapminder , mapping = aes(x = year  , y = lifeExp , colour= continent))+ geom_point() + geom_smooth(se = FALSE) + facet_wrap(~continent) + theme(legend.position="none") + expand_limits(y=0)
+print(plot4)
+```
+
+## Analysis
+
+In the earlier *country specific* plots we observe that the life expectancy in **India** has increased from 36 years in 1952 to 69 years in 2020 which is approximately double. This improve can be attributed to advancement in healthcare along with a decrease in infant mortality.
+
+As we move to the next plot, which is *continent specific*, we once again observe that almost all the countries in Asia have shown promising growth in terms of life expectancy. However, countries like **Japan** started at 60 and have crossed the mark of 80 while some countries like **Afghanistan** started at 30 and have only been able to reach to around 42 years. The main cause for this slow trend would be malnutrition and lack of basic health services which in turn is caused by the unstable economic conditions.
+
+This indicates that there exists a great scope to deliver public health services and effective medicine in these countries that are still struggling.
+
+The final plot grouped by continent extrapolates the observations from the previous graphs. While **Oceania, Europe and America** lead, **Asia and Africa** closely follow. Overall, the world average life expectancy increased by double! As more people have moved above the poverty line, healthcare has become affordable and accessible to most.
+
+It looks from the data that we can safely say the unequal divide in standard of living between countries is decreasing and the world as a whole has and continues to transition into a safer place to live in.
+

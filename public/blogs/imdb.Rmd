@@ -3,7 +3,7 @@ categories:
 - ""
 - ""
 date: "2020-09-18"
-description: Airbnb price analysis
+description: IMDb rating analysis
 draft: false
 image: pic12.jpg
 keywords: ""
@@ -212,4 +212,8 @@ At the end of the day, we reject the null hypothesis as t > 2 and p < 0.05.
 
 ### Conclusion
 
-here is statistically significant evidence that Steven Spielberg has a higher mean rating than Tim Burton.
+
+It is clear that there is statistically significant evidence that Steven Spielberg has a higher mean rating than Tim Burton.
+
+This analysis can easily be extended to any directors we wish to compare. It can also be used for an attribute like genre if we want to check if ratings for 2 genre are significantly different. Here, we are stating the result with 95% confidence but the value for our confidence interval can be modified as per requirement.
+
