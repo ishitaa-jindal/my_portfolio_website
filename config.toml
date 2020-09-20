@@ -93,8 +93,8 @@ disqusShortname = ""
     
     [[params.tiles.showcase]]
       title = "About Me"
-      subtitle = "Business Analyst|Researcher|Asthete"
-      image = "projects/tree.png"
+      subtitle = "Business Analyst|Researcher|Aesthete"
+      image = "projects/aboutme.png"
       url = "blogs/aliquam"
 
     [[params.tiles.showcase]]
@@ -179,7 +179,7 @@ disqusShortname = ""
     phone = "Available on request"
 
     [[params.contact.address]]
-    title = "London Business School"
+    title = "Address"
     street = "Regent's Park"
     city = "London, NW1 4SA"
     country = "United Kingdom"
