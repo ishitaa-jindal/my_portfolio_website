@@ -1,16 +1,16 @@
 ---
-title: "Singapore AirBnb"
-author: "Ishitaa Jindal"
-date: "`r Sys.Date()`"
-output:
-  html_document:
-    theme: flatly
-    highlight: zenburn
-    number_sections: yes
-    toc: yes
-    toc_float: yes
-    code_folding: show
+categories:
+- ""
+- ""
+date: "2020-09-18"
+description: Airbnb price analysis
+draft: false
+image: pic12.jpg
+keywords: ""
+slug: project 1
+title: Predictive models of the price of Airbnbs in Singapore 
 ---
+
 
 ```{r, setup, include=FALSE}
 knitr::opts_chunk$set(
