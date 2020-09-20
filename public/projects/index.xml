@@ -13,10 +13,10 @@
     
     <item>
       <title>Predictive models of the price of Airbnbs in Singapore</title>
-      <link>/projects/project1/index/</link>
+      <link>/projects/projects/project1/</link>
       <pubDate>Fri, 18 Sep 2020 00:00:00 +0000</pubDate>
       
-      <guid>/projects/project1/index/</guid>
+      <guid>/projects/projects/project1/</guid>
       <description>“Singapore Skyline”
 IntroductionAirbnb is a vacation rental online marketplace based in San Francisco, California. Founded in 2008, the company has skyrocketed in popularity, with a private valuation of $18 billion and a plan to potentially go public within the year.The scope of this work, is to analyse data about Airbnb listings and fit a model to predict the total cost for two people staying 4 nights in an AirBnB in Singapore.</description>
     </item>

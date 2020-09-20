@@ -1,0 +1,223 @@
+---
+categories:
+- ""
+- ""
+date: "2020-09-18"
+description: Airbnb price analysis
+draft: false
+image: pic12.jpg
+keywords: ""
+slug: projects/project1
+title: Predictive models of the price of Airbnbs in Singapore 
+---
+
+
+```{r, setup, include=FALSE}
+knitr::opts_chunk$set(
+  message = FALSE, 
+  warning = FALSE, 
+  tidy=FALSE,     # display code as typed
+  size="small")   # slightly smaller font for code
+options(digits = 3)
+
+# default figure size
+knitr::opts_chunk$set(
+  fig.width=6.75, 
+  fig.height=6.75,
+  fig.align = "center"
+)
+```
+
+```{r load-libraries, include=FALSE}
+library(tidyverse)  # Load ggplot2, dplyr, and all the other tidyverse packages
+library(mosaic)
+library(ggthemes)
+library(lubridate)
+library(here)
+library(skimr)
+library(janitor)
+library(httr)
+library(readxl)
+library(vroom)
+library(leaflet)
+library(readr)
+library(huxtable)
+library(sf)
+library(tmap)
+library(tmaptools)
+library(corrplot)
+library(ggpubr)
+library(GGally)
+```
+
+!["Singapore Skyline"](https://raw.githubusercontent.com/Gritzbach/my_website/master/Singapore.webp)
+
+# Introduction
+Airbnb is a vacation rental online marketplace based in San Francisco, California. Founded in 2008, the company has skyrocketed in popularity, with a private valuation of $18 billion and a plan to potentially go public within the year. 
+The scope of this work, is to analyse data about Airbnb listings and fit a model to predict the total cost for two people staying 4 nights in an AirBnB in Singapore. 
+
+We begin with exploratory data analysis and mapping of the key insights from the dataset before running various analyses including a demand analysis over time, a superhost analysis on the price and a heatmap of the average daily prices over the past 2 years, before running a thorough regression analysis. We then analyse our final results and wrap it up in our conclusion.
+
+# Exploratory Data Analysis(EDA)
+The aim of this section is to gain a better understanding of our data set. To do this, we utilize a variety of tools, such as data visualizations and correlation matrices. Our dataset comes from insideairbnb.com, and represent official AirBnb data. 
+
+## Loading the Data
+
+```{r, echo=TRUE}
+
+# Importing listings dataset
+singapore <- vroom("http://data.insideairbnb.com/singapore/sg/singapore/2020-06-22/data/listings.csv.gz") %>% 
+    clean_names()
+
+dplyr::glimpse(singapore)
+
+# Importing reviews dataset
+reviews <- vroom("http://data.insideairbnb.com/singapore/sg/singapore/2020-06-22/data/reviews.csv.gz") %>% 
+    clean_names()
+
+glimpse(reviews)
+
+```
+
+## Computing Summary Statistics
+
+To proceed with our analysis we will begin by selecting the specific variables of interest that will inform our regression models. On the figure below, we can see the summary statics of the selected variables and their rough distributions. By inspecting the distributions, all variables seem to be heavily skewed, which could potentially signify the existence of extreme data points, which will be dealt with in part 2.3.2.
+
+```{r}
+
+#select the variables that will be used for analysis
+singapore_listings <- singapore %>% 
+  
+  select(price, 
+         cleaning_fee, 
+         extra_people, 
+         property_type, 
+         room_type,
+         minimum_nights,
+         number_of_reviews, 
+         review_scores_rating,
+         review_scores_location,
+         longitude, 
+         latitude, 
+         neighbourhood, 
+         neighbourhood_group_cleansed,
+         zipcode,
+         host_is_superhost,
+         is_location_exact,
+         cancellation_policy,
+         host_response_time,
+         host_acceptance_rate,
+         security_deposit,
+         accommodates,
+         bedrooms)
+  
+#calculate summary statistics and observe missing values if any
+skimr::skim(singapore_listings)
+```
+
+## Cleaning the Data: 
+
+After having selected the variables of interest, we need to clean up the dataset to prepare it for analysis. We begin by handling the missing data, transforming price data to numerical values, visualising the distribution of our dependent variable, the price and filtering out extreme data.
+
+###Data Wrangling and Handling Missing Values
+
+```{r}
+singapore_listings <- singapore_listings %>%
+  
+  #convert all prices to numeric values
+  mutate(price = parse_number(price), 
+         cleaning_fee = parse_number(cleaning_fee),
+         extra_people = parse_number(extra_people),
+         security_deposit = parse_number(security_deposit)) %>%
+  
+  #replace all NA values for cleaning fee and security deposit to the numeric price 0
+  mutate(cleaning_fee = case_when(is.na(cleaning_fee) ~ 0, TRUE ~ cleaning_fee)) %>% 
+  mutate(security_deposit = case_when(is.na(security_deposit) ~ 0, TRUE ~ security_deposit))
+
+```
+
+## Data Filtering
+
+After looking at the above shown figures, we chose to filter the following variables:
+
+1. Minimum nights to <= 4 nights
+2. Price to <= $1500
+3. Cleaning fee <= $200
+4. Fee for extra people <= $100
+
+Moreover, we determined the top 5 property types and allocated all other types into an "other" category.
+
+```{r}
+
+#Finding the most listed property types
+top_property_types <- singapore_listings %>% 
+  group_by(property_type) %>% 
+  summarise(count = count(property_type)) %>% 
+  top_n(5)
+
+#Adding column for the top 5 property types and categorising the rest as 'Other'
+filtered_listings <- singapore_listings %>%
+  mutate(prop_type_simplified = case_when(
+    property_type %in% c("Apartment","Condominium", "Hostel","House", "Serviced apartment") ~ property_type, 
+    TRUE ~ "Other"
+  ))
+
+# Filter dataframe by minimum nights <= 4
+filtered_listings <- filtered_listings %>% 
+  filter(minimum_nights <= 4, price <= 1500, cleaning_fee <= 200, extra_people <= 100)
+
+```
+
+# Mapping
+
+Singapore is a vibrant touristic city-state with the largest port by throughput consistently since 2015. Below we mapped AirBnbs in singapore with respect to their geographical location, depicting their price range, the property type and the 4 main neighbourhoods.  As expected, the majority of airbnb listings are located in the city-center, with higher prices predominantely in the area. Moreover, larger accommodation types such as hostels are also concentrated in the city center. On the contrary, the northern part of Singapore seems to be significantly less developed and less touristic, as the number of listings is lower.
+
+```{r}
+
+#mapping visualisation for listings by price
+pal <- colorNumeric(palette = "RdBu", domain = c(-100:1000))
+
+map_1 <- leaflet(data = filtered_listings) %>% 
+  addProviderTiles("OpenStreetMap.Mapnik") %>% 
+  addCircleMarkers(lng = ~longitude, 
+                   lat = ~latitude, 
+                   radius = 1, 
+                   color = ~pal(price), 
+                   fillOpacity = 0.4, 
+                   label = ~price) %>% 
+   addLegend("bottomright", pal = pal, values = ~price,
+    title = "Price",
+    labFormat = labelFormat(prefix = "$"),
+    opacity = 1
+  )
+map_1
+
+#color by neighborhood
+pal <- colorFactor(palette = c("#484848", "#FC642D", "#767676", "#00A699", "#FF5A5F"), 
+               levels = c("North-East Region", "North Region", "East Region", "West Region", "Central Region"))
+
+map_2 <- leaflet(data = filtered_listings) %>% 
+  addProviderTiles("OpenStreetMap.Mapnik") %>% 
+  addCircleMarkers(lng = ~longitude, 
+                   lat = ~latitude, 
+                   radius = 1, 
+                   color = ~pal(neighbourhood_group_cleansed), 
+                   fillOpacity = 0.4, 
+                   label = ~neighbourhood_group_cleansed)
+
+#color by property type
+pal <- colorFactor(palette = c("#e98a15", "#a2ad59", "#1D3461", "#538083", "#a53860"), 
+               levels = c("Apartment","Condominium", "Hostel","House", "Serviced apartment"))
+
+map_3 <- leaflet(data = filtered_listings) %>% 
+  addProviderTiles("OpenStreetMap.Mapnik") %>% 
+  addCircleMarkers(lng = ~longitude, 
+                   lat = ~latitude, 
+                   radius = 1, 
+                   color = ~pal(prop_type_simplified), 
+                   fillOpacity = 0.5, 
+                   label = ~prop_type_simplified)
+map_2 
+map_3
+
+```
