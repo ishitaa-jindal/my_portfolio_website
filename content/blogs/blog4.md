@@ -20,11 +20,11 @@ Some of the activities apart from my work and studies that define me are canvas 
 
 The mantra that's been carrying me through life is that you can achieve anything with consistency and collaboration!
 
-![consistency and collaoration](static/img/projects/Consistency.jpg)
+![consistency and collaoration](/projects/Consistency.jpg)
 
 ## Background and experience ##
 
-Since my engineering days, I've been trying to find ways to solve real-world problems using the power of science and this began with research in the field of analytics and health-care. The research resulted in two published papers which you can find here (if research and long texts interest you):
+Since my engineering days, I've been trying to find ways to solve real-world problems using the power of science and this began with research in the field of analytics and health-care. The research resulted in two published papers which you can find here (if research and long texts interest you)-
 
 * [Detection and Prevention of Cervical Cancer](https://ieeexplore.ieee.org/document/9033800)
 * [Cataract Detection using Digital Image Processing](https://ieeexplore.ieee.org/document/8978316)

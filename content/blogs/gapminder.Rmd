@@ -37,7 +37,7 @@ library(here)
 
 ## Introduction
 
-Gapminder dataset provides data about the population, life expectancy and GDP in different countries of the world from 1952 to 2007. It is an extremely useful dataset to start with, for learning the basics of data analysis and visualisations. With this data, we aim to analyse the life expactancy in various countries and try to explain any anomalies and trends that we observe.
+Gapminder dataset provides data about the population, life expectancy and GDP in different countries of the world from 1952 to 2007. It is an extremely useful dataset to start with, for learning the basics of data analysis and visualisations. With this data, we aim to analyse the life expectancy in various countries and try to explain any anomalies and trends that we observe.
 
 ## Raw Data
 

@@ -11,3 +11,9 @@ slug: ipsum
 title: Art Blog (Coming Soon!)
 ---
 
+
+## another pic ##
+
+---
+image: pic10.jpg
+---

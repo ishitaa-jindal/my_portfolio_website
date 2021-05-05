@@ -143,7 +143,7 @@ disqusShortname = ""
   [params.two]
     enable = true
     title = "My Interests and Blog"
-    subtitle = "I believe that with consistency we achieve and with faith we persevere. I'm a resilient individual with determination to make positive impact wherever I put my energy. This website is an attempt to share some of my work in the field of analytics which can be browsed through the analytics blog above. I would also love sharing some of my art projects. Feel free to reach out as I always like to connect with like minded people."
+    subtitle = "I believe that with consistency we achieve and with faith we persevere. I'm a resilient individual with determination to make positive impact wherever I put my energy. This website is an attempt to share some of my work in the field of analytics which can be browsed through the analytics blog above. You can also have a look at some of my art projects here - "
     buttonText = "Explore Blog"
     url = "blogs/ipsum"
 
