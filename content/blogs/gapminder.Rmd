@@ -33,7 +33,7 @@ library(gapminder)  # gapminder dataset
 library(here)
 ```
 
-!["Gapminder"](https://www.adamvowles.co.uk/wp-content/uploads/2015/05/gapminder.png)
+![Gapminder](https://www.adamvowles.co.uk/wp-content/uploads/2015/05/gapminder.png)
 
 ## Introduction
 

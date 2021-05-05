@@ -50,7 +50,7 @@ library(ggpubr)
 library(GGally)
 ```
 
-!["Singapore Skyline"](https://raw.githubusercontent.com/Gritzbach/my_website/master/Singapore.webp)
+![Singapore Skyline](https://raw.githubusercontent.com/Gritzbach/my_website/master/Singapore.webp)
 
 ***
 # Introduction
@@ -67,7 +67,7 @@ The aim of this section is to gain a better understanding of our data set. To do
 ## Raw Data
 We have a look at our raw data, after selecting the attributes from the table that we want to use in this analyse.
 
-```{r, echo=TRUE}
+```{r, echo=TRUE, message=FALSE, warning=FALSE,error=FALSE}
 
 # Importing listings dataset
 singapore <- vroom("http://data.insideairbnb.com/singapore/sg/singapore/2020-06-22/data/listings.csv.gz") %>% 
@@ -107,7 +107,7 @@ dplyr::glimpse(singapore_listings)
 
 Let's compute the summary statistics for our data and desired variables. This will give us an idea about data size, variable types, missing and unique values to begin with. For numeric data, we also see the mean and standard deviation which helps guide the analysis.
 
-```{r}
+```{r message=FALSE, warning=FALSE,error=FALSE}
 #calculate summary statistics and observe missing values if any
 skimr::skim(singapore_listings)
 ```
@@ -118,7 +118,7 @@ In the figure above, we can see the summary statics of the selected variables an
 ## Data Wrangling and Handling Missing Values
 After having selected the variables of interest, we need to clean up the dataset to prepare it for analysis. We begin by handling the missing data, transforming price data to numerical values, visualising the distribution of our dependent variable, then price and filtering out extreme data.
 
-```{r}
+```{r message=FALSE, warning=FALSE, error=FALSE}
 singapore_listings <- singapore_listings %>%
   
   #convert all prices to numeric values
@@ -145,7 +145,7 @@ After looking at the above shown figures, we chose to filter the following varia
 
 Moreover, we determined the top 5 property types and allocated all other types into an "other" category.
 
-```{r}
+```{r message=FALSE, warning=FALSE, error=FALSE}
 
 #Finding the most listed property types
 top_property_types <- singapore_listings %>% 
@@ -170,7 +170,7 @@ filtered_listings <- filtered_listings %>%
 # Mapping
 Singapore is a vibrant touristic city-state with the largest port by throughput consistently since 2015. Below we map AirBnbs in singapore with respect to their geographical location, depicting their price range.
 
-```{r}
+```{r message=FALSE, warning=FALSE, error=FALSE}
 
 #mapping visualisation for listings by price
 pal <- colorNumeric(palette = "RdBu", domain = c(-100:1000))
@@ -196,7 +196,7 @@ The second step would be to map airbnb listing by neighbourhood. The neighbourho
 
 When compared with the map above, it also gives insights of how various regions are priced.
 
-```{r}
+```{r message=FALSE, warning=FALSE, error=FALSE}
 #color by neighborhood
 pal <- colorFactor(palette = c("#484848", "#FC642D", "#767676", "#00A699", "#FF5A5F"), 
                levels = c("North-East Region", "North Region", "East Region", "West Region", "Central Region"))
@@ -219,7 +219,7 @@ map_2
 ***
 We further map the number of airbnb listings for each property type. The property types we've used here are the filtered ones i.e. the 5 most popular properties are taken and the rest are categorised under one group named 'other'.
 
-```{r}
+```{r message=FALSE, warning=FALSE, error=FALSE}
 #color by property type
 pal <- colorFactor(palette = c("#e98a15", "#a2ad59", "#1D3461", "#538083", "#a53860"), 
                levels = c("Apartment","Condominium", "Hostel","House", "Serviced apartment"))

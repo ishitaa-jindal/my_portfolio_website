@@ -28,7 +28,7 @@ knitr::opts_chunk$set(
 ```
 
 
-```{r, load-libraries, echo=FALSE}
+```{r, load-libraries, echo=FALSE, message=FALSE, warning=FALSE, error=FALSE}
 library(tidyverse)  # Load ggplot2, dplyr, and all the other tidyverse packages
 library(mosaic)
 library(ggthemes)
@@ -44,7 +44,7 @@ library(openintro)
 library(kableExtra) ##for table styles
 ```
 
-!["Imdb"](https://static.amazon.jobs/teams/53/images/IMDb_Header_Page.jpg?1501027252)
+![Imdb](https://static.amazon.jobs/teams/53/images/IMDb_Header_Page.jpg?1501027252)
 
 ## Introduction
 The aim of this analysis is to find the relationship between the movie budgets, reviews and earnings based on the [Kaggle IMDB 5000 movie dataset](https://www.kaggle.com/carolzhangdc/imdb-5000-movie-dataset)
@@ -55,7 +55,7 @@ We further perform hypothesis testing to check if ratings are dependent on direc
 ## Raw Data 
 Let us load the data and glimpse at its structure:
 
-```{r, load-movies-data}
+```{r, load-movies-data, message=FALSE, warnng=FALSE, error=FALSE}
 
 movies <- read_csv(here::here("data", "movies.csv"))
 glimpse(movies)
