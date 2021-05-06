@@ -43,9 +43,9 @@ disqusShortname = ""
     # Optional logo as brand stored in img/
     # logo = "logo.png"
 
-    [[params.navigation.links]]
-      name = "Home"
-      url = "#"
+    #[[params.navigation.links]]
+    #  name = "Home"
+    #  url = "#"
 
     [[params.navigation.links]]
       name = "About Me"
