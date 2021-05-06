@@ -20,7 +20,7 @@ Some of the activities apart from my work and studies that define me are canvas 
 
 The mantra that's been carrying me through life is that you can achieve anything with consistency and collaboration!
 
-![consistency and collaoration](https://github.com/ishitaa-jindal/my_portfolio_website/blob/master/static/img/projects/Consistency.png)
+![consistency and collaboration](https://github.com/ishitaa-jindal/my_portfolio_website/blob/master/static/img/projects/Consistency.png?raw=TRUE)
 
 ## Background and experience ##
 
