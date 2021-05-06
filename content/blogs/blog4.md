@@ -20,7 +20,7 @@ Some of the activities apart from my work and studies that define me are canvas 
 
 The mantra that's been carrying me through life is that you can achieve anything with consistency and collaboration!
 
-![consistency and collaoration](/projects/Consistency.jpg)
+![consistency and collaoration](https://drive.google.com/file/d/1thnNGN1TjhSo9DeQXQqpCwFH7AJd6mr9/view?usp=sharing)
 
 ## Background and experience ##
 

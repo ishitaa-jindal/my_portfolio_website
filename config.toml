@@ -96,20 +96,20 @@ disqusShortname = ""
     # Display your showcases here.
     
     [[params.tiles.showcase]]
-      title = "About Me"
-      subtitle = "Business Analyst|Researcher|Aesthete"
+      title = "Business Analyst|Researcher|Aesthete"
+      subtitle = "You can know more about me and find my CV here"
       image = "projects/aboutme.png"
       url = "blogs/aliquam"
 
     [[params.tiles.showcase]]
       title = "Singapore AirBnbs"
-      subtitle = "A mapping analysis"
+      subtitle = "A pricing and mapping analysis of AirBnbs in Singapore"
       image = "projects/airbnb.png"
       url = "blogs/airbnb"
 
     [[params.tiles.showcase]]
       title = "IMDB Ratings"
-      subtitle = "A study of movie reviews"
+      subtitle = "Have a look at some interesting insights from a study of movie reviews"
       image = "projects/IMDb.jpg"
       url = "blogs/imdb"
 
@@ -144,7 +144,7 @@ disqusShortname = ""
     enable = true
     title = "My Interests and Blog"
     subtitle = "I believe that with consistency we achieve and with faith we persevere. I'm a resilient individual with determination to make positive impact wherever I put my energy. This website is an attempt to share some of my work in the field of analytics which can be browsed through the analytics blog above. You can also have a look at some of my art projects here - "
-    buttonText = "Explore Blog"
+    buttonText = "Explore Art Blog"
     url = "blogs/ipsum"
 
 
