@@ -18,4 +18,4 @@ title: Art Blog
 
 ![art 4](https://github.com/ishitaa-jindal/my_portfolio_website/blob/master/static/img/projects/IMG-1402.jpg?raw=TRUE)
 
-<img src="https://github.com/ishitaa-jindal/my_portfolio_website/blob/master/static/img/projects/IMG-1402.jpg?raw=TRUE" alt="drawing" width="200"/>
+<img src=https://github.com/ishitaa-jindal/my_portfolio_website/blob/master/static/img/projects/IMG-1402.jpg?raw=TRUE alt="drawing" width="200"/>
