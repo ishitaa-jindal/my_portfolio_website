@@ -17,3 +17,5 @@ title: Art Blog
 ![art 3](https://github.com/ishitaa-jindal/my_portfolio_website/blob/master/static/img/projects/IMG-1400.jpg?raw=TRUE)
 
 ![art 4](https://github.com/ishitaa-jindal/my_portfolio_website/blob/master/static/img/projects/IMG-1402.jpg?raw=TRUE)
+
+<img src="https://github.com/ishitaa-jindal/my_portfolio_website/blob/master/static/img/projects/IMG-1402.jpg?raw=TRUE" alt="drawing" width="200"/>
