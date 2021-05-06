@@ -37,7 +37,7 @@ In the months following graduation, I worked as an Associate at a consulting fir
 
 Currently I'm pursuing a Masters at London Business School in the UK and alongside working at a health-tech start-up as a Strategy intern. I have grown to like the business analytics and product development aspect of companies more and more, and look forward to pursue a career in that direction.
 
-You can find my CV here:
+You can find my CV here: [View CV](https://github.com/ishitaa-jindal/my_portfolio_website/blob/master/Resume.pdf?raw=TRUE)
 
 
 
