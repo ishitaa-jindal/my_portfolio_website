@@ -96,7 +96,7 @@ disqusShortname = ""
     # Display your showcases here.
     
     [[params.tiles.showcase]]
-      title = "Business Analyst|Researcher|Aesthete"
+      title = "Business Analyst | Researcher | Aesthete"
       subtitle = "You can know more about me and find my CV here"
       image = "projects/aboutme.png"
       url = "blogs/aliquam"
